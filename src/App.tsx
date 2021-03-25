@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { getStocks } from './actions/StocksActions';
 import { DatePicker, Space } from 'antd';
 import { Select } from 'antd';
-import './App.css';
 import { DataTable } from './components/Table';
 import { RootStore } from './store';
 import LineChart from './components/LineChart';
 import { Typography, Row, Col } from 'antd';
-
 import dayjs from 'dayjs';
 
+import './App.css';
+
 interface Props {
-  getStocks?: any;
+  getStocks: any;
   stocks: any;
 }
 
@@ -21,7 +21,7 @@ const App = ({ getStocks, stocks }: Props) => {
   const [dateFrom, setDateFrom] = useState<string>('');
   const [dateTo, setDateTo] = useState<string>('');
 
-  const querySort = (value: string) => {
+  const querySort = (value: string): void => {
     setQuery(value);
   };
 
@@ -29,11 +29,11 @@ const App = ({ getStocks, stocks }: Props) => {
   const { Option } = Select;
   const { loading, error } = stocks;
 
-  const handleFromChange: any = (dateString: string) => {
+  const handleFromChange: any = (dateString: string): void => {
     setDateFrom(dayjs(dateString).format('YYYY-MM-DD'));
   };
 
-  const handleToChange: any = (dateString: string) => {
+  const handleToChange: any = (dateString: string): void => {
     setDateTo(dayjs(dateString).format('YYYY-MM-DD'));
   };
 
@@ -45,6 +45,7 @@ const App = ({ getStocks, stocks }: Props) => {
 
   if (loading) return <h1>Loading</h1>;
   if (error) return <h1>Error</h1>;
+
   return (
     <div className='App'>
       <Row>
@@ -58,8 +59,8 @@ const App = ({ getStocks, stocks }: Props) => {
           <Option value='DESC'>DESC</Option>
           <Option value='ASC'>ASC</Option>
         </Select>
-        <DatePicker onChange={handleFromChange} />
-        <DatePicker onChange={handleToChange} />
+        <DatePicker onChange={handleFromChange} placeholder='From' />
+        <DatePicker onChange={handleToChange} placeholder='To' />
       </Space>
 
       <div style={{ height: 300 }}>{stocks?.stocks?.data && <LineChart data={stocks.stocks.data} />}</div>

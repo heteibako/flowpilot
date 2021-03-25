@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import data from '../data.json';
 import {
   GET_STOCKS_LOADING,
   GET_STOCKS_SUCCESS,

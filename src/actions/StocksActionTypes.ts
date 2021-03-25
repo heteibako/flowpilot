@@ -15,8 +15,8 @@ export type StockType = {
 };
 
 export interface DataType {
-  stocks: StockType[];
-  pagination?: { limit: number; offset: number; count: number; total: number };
+  stocks: { data: StockType[] };
+  pagination: { limit: number; offset: number; count: number; total: number };
 }
 
 export interface StocksLoading {
