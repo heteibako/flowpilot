@@ -3,13 +3,13 @@ import {
   GET_STOCKS_LOADING,
   GET_STOCKS_SUCCESS,
   GET_STOCKS_FAIL,
-  DataType,
+  IData,
 } from '../actions/StocksActionTypes';
 
 export interface IDefaultState {
   loading: boolean;
   error: {};
-  stocks: DataType[];
+  stocks: IData[];
 }
 
 const defaultState: IDefaultState = {

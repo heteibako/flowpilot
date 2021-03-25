@@ -14,7 +14,7 @@ export type StockType = {
   exchange: string;
 };
 
-export interface DataType {
+export interface IData {
   stocks: { data: StockType[] };
   loading: any;
   error: any;
@@ -27,7 +27,7 @@ export interface StocksLoading {
 
 export interface StocksSuccess {
   type: typeof GET_STOCKS_SUCCESS;
-  payload: DataType[];
+  payload: IData[];
 }
 
 export interface StocksFail {

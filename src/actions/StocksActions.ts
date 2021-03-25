@@ -5,7 +5,7 @@ import {
   GET_STOCKS_SUCCESS,
   GET_STOCKS_FAIL,
   StocksDispatchTypes,
-  DataType,
+  IData,
 } from './StocksActionTypes';
 
 export const getStocks = (sort: string, dateFrom: string, dateTo: string) => async (
@@ -16,7 +16,7 @@ export const getStocks = (sort: string, dateFrom: string, dateTo: string) => asy
       type: GET_STOCKS_LOADING,
     });
 
-    const res = await axios.get<DataType[]>(
+    const res = await axios.get<IData[]>(
       `${process.env.REACT_APP_BASE_URL}intraday?access_key=${process.env.REACT_APP_API_KEY}&symbols=AAPL&sort=${sort}&date_from=${dateFrom}&date_to=${dateTo}`
     );
     dispatch({
