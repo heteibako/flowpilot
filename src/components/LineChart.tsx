@@ -1,8 +1,10 @@
 import { ResponsiveLine } from '@nivo/line';
 import dayjs from 'dayjs';
+import LoadingPage from './LoadingPage';
 
 interface DataProps {
   data?: any;
+  loading: any;
 }
 
 type Data = {
@@ -11,7 +13,7 @@ type Data = {
   data: { x: string; y: number }[];
 };
 
-const LineChart = ({ data }: DataProps) => {
+const LineChart = ({ data, loading }: DataProps) => {
   const dataToLoad: Data[] = [
     {
       id: 'Stocks',
@@ -23,7 +25,9 @@ const LineChart = ({ data }: DataProps) => {
     },
   ];
 
-  return (
+  return loading ? (
+    <LoadingPage />
+  ) : (
     <ResponsiveLine
       data={dataToLoad}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -36,18 +40,18 @@ const LineChart = ({ data }: DataProps) => {
         orient: 'bottom',
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 90,
-        legend: 'Stock Market',
-        legendOffset: 36,
+        tickRotation: 45,
+        // legend: 'Stock Market',
+        legendOffset: 50,
         legendPosition: 'middle',
       }}
       axisLeft={{
         orient: 'left',
-        tickSize: 5,
+        tickSize: 3,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'Stocks',
-        legendOffset: -40,
+        legend: 'High',
+        legendOffset: -50,
         legendPosition: 'middle',
       }}
       pointSize={10}

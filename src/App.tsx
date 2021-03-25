@@ -8,8 +8,8 @@ import { RootStore } from './store';
 import LineChart from './components/LineChart';
 import { Typography, Row, Col } from 'antd';
 import dayjs from 'dayjs';
-
 import './App.css';
+import ErrorPage from './components/ErrorPage';
 
 interface Props {
   getStocks: any;
@@ -43,8 +43,7 @@ const App = ({ getStocks, stocks }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, dateFrom, dateTo]);
 
-  if (loading) return <h1>Loading</h1>;
-  if (error) return <h1>Error</h1>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className='App'>
@@ -55,15 +54,16 @@ const App = ({ getStocks, stocks }: Props) => {
       </Row>
 
       <Space size='small'>
-        <Select defaultValue='ASC' style={{ width: 120 }} onChange={querySort}>
+        <Select defaultValue='DESC' style={{ width: 120 }} onChange={querySort}>
           <Option value='DESC'>DESC</Option>
           <Option value='ASC'>ASC</Option>
         </Select>
         <DatePicker onChange={handleFromChange} placeholder='From' />
         <DatePicker onChange={handleToChange} placeholder='To' />
       </Space>
-
-      <div style={{ height: 300 }}>{stocks?.stocks?.data && <LineChart data={stocks.stocks.data} />}</div>
+      <div style={{ height: 300, marginBottom: 50, padding: 10 }}>
+        {stocks?.stocks?.data && <LineChart loading={loading} data={stocks.stocks.data} />}
+      </div>
 
       <DataTable data={stocks?.stocks.data} />
     </div>
