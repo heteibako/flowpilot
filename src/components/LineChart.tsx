@@ -30,15 +30,16 @@ const LineChart = ({ data, loading }: DataProps) => {
   ) : (
     <ResponsiveLine
       data={dataToLoad}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 110, bottom: 90, left: 60 }}
       xScale={{ type: 'point' }}
       yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
       yFormat=' >-.2f'
       axisTop={null}
       axisRight={null}
+      enableArea={true}
       axisBottom={{
         orient: 'bottom',
-        tickSize: 5,
+        tickSize: 2,
         tickPadding: 5,
         tickRotation: 45,
         // legend: 'Stock Market',
@@ -54,7 +55,7 @@ const LineChart = ({ data, loading }: DataProps) => {
         legendOffset: -50,
         legendPosition: 'middle',
       }}
-      pointSize={10}
+      pointSize={8}
       pointColor={{ theme: 'background' }}
       pointBorderWidth={2}
       pointBorderColor={{ from: 'serieColor' }}

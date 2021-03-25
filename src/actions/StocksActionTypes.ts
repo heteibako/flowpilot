@@ -16,6 +16,8 @@ export type StockType = {
 
 export interface DataType {
   stocks: { data: StockType[] };
+  loading: any;
+  error: any;
   pagination: { limit: number; offset: number; count: number; total: number };
 }
 

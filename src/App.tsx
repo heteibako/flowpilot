@@ -12,7 +12,7 @@ import './App.css';
 import ErrorPage from './components/ErrorPage';
 
 interface Props {
-  getStocks: any;
+  getStocks: (sort: string, dateFrom: string, dateTo: string) => Promise<void>;
   stocks: any;
 }
 
@@ -61,7 +61,7 @@ const App = ({ getStocks, stocks }: Props) => {
         <DatePicker onChange={handleFromChange} placeholder='From' />
         <DatePicker onChange={handleToChange} placeholder='To' />
       </Space>
-      <div style={{ height: 300, marginBottom: 50, padding: 10 }}>
+      <div style={{ height: 400, marginBottom: 50, padding: 10 }}>
         {stocks?.stocks?.data && <LineChart loading={loading} data={stocks.stocks.data} />}
       </div>
 
