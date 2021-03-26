@@ -58,8 +58,8 @@ const App = ({ getStocks, stocks }: Props) => {
           <Option value='DESC'>DESC</Option>
           <Option value='ASC'>ASC</Option>
         </Select>
-        <DatePicker onChange={handleFromChange} placeholder='From' />
-        <DatePicker onChange={handleToChange} placeholder='To' />
+        <DatePicker allowClear={false} onChange={handleFromChange} placeholder='From' />
+        <DatePicker allowClear={false} onChange={handleToChange} placeholder='To' />
       </Space>
       <div style={{ height: 400, marginBottom: 50, padding: 10 }}>
         {stocks?.stocks?.data && <LineChart loading={loading} data={stocks.stocks.data} />}
